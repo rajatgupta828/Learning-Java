@@ -1,4 +1,4 @@
-package com.rajat.Inheritance;
+package com.rajat.oopsConcepts.Inheritance;
 
 class A extends C{
     public static void aprint(){

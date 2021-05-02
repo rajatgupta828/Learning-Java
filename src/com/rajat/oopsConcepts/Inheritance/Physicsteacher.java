@@ -1,4 +1,4 @@
-package com.rajat.Inheritance;
+package com.rajat.oopsConcepts.Inheritance;
 
 /*
 This is the Child Class which inherits parent Class teacher

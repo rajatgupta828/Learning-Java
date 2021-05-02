@@ -1,4 +1,4 @@
-package com.rajat.Inheritance;
+package com.rajat.oopsConcepts.Inheritance;
 
 /*
 This is the parent Class which is can be extended and it's properties can be used
