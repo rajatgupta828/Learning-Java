@@ -1,4 +1,4 @@
-package com.rajat.Abstraction;
+package com.rajat.oopsConcepts.Abstraction;
 
 /*
 1. Class can not be instantiated.

@@ -1,4 +1,4 @@
-package com.rajat.Abstraction;
+package com.rajat.oopsConcepts.Abstraction;
 
 public class Socks extends Clothing{
 
