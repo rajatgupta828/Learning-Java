@@ -1,0 +1,5 @@
+Interfaces are by default abstract.
+
+In interfaces all the methods are abstract, but we can define absract and non-abstract classes both in the
+abstract classes.
+

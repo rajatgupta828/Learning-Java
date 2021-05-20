@@ -2,5 +2,4 @@ Inner classes are basically nested classes.
 
 We can nest once class in another and there are 4 types of it :
 
-1. Non static nested class -  Check Class GearBox for the same.
-2.
+1. Non static nested class -  Check Class GearBox for

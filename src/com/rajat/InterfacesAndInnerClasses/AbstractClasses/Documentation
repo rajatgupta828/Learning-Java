@@ -1,0 +1,14 @@
+Interfaces are by default abstract.
+
+In interfaces all the methods are abstract, but we can define absract and non-abstract classes both in the
+abstract classes.
+
+- Can not instantiate abstract class.
+- Abstract class can have abstract and non-abstract methods.
+- "is a" and "can" relation decides b/w interface and abstract class.
+bird is a animal - bird can extend animal class
+bird can fly - it should be in interface.
+
+- interface should have variables that can be only final and static, not case in abstract.
+ - interface methods are always public
+ -
