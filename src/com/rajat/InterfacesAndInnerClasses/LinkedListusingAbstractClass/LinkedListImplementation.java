@@ -46,6 +46,7 @@ public class LinkedListImplementation implements NodeList{
                     this.root.setPrevious(item);
                     this.root = item;
                 }
+                return true;
             }else{
                 // equal
                 System.out.println(item.getValue() + " Is already Present");
@@ -57,11 +58,35 @@ public class LinkedListImplementation implements NodeList{
 
     @Override
     public boolean removeItem(ListItem item) {
+        if(item != null){
+            System.out.println("Deleting Item : " + item.getValue());
+        }
+
+        ListItem currentItem = this.root;
+
+        while(currentItem != null){
+            int comparison = currentItem.compareTo(item);
+            if (comparison ==  0){
+                // found item to delete
+                if (currentItem == this.root){
+                    this.root = currentItem.next();
+                }else{
+                    currentItem.previous().setNext(currentItem.next());
+                }
+            }
+        }
         return false;
     }
 
     @Override
     public void traverse(ListItem root) {
-
+        if (root == null){
+            System.out.println("Linked List is empty");
+        }else{
+            while (root != null){
+                System.out.println(root.getValue());
+                root = root.next();
+            }
+        }
     }
 }
