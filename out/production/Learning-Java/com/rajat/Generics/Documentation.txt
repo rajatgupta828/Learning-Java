@@ -1,0 +1,22 @@
+Generics is used for validations.
+
+We can define in the class :
+    Team<T>{
+
+    }
+
+Generics can be then validated as well by providing the Upper bound :
+
+public class Team<T extends Player> {
+
+}
+Interfaces can be also provided as the upper bounds.
+Extend from 1 class and multiple inheritence.
+Multiple bounds can be provided using Interfaces
+public class Team<T extends Player & Coach & Manager> {
+
+}
+
+coach and manager would be interfaces.
+and then can be used.
+
