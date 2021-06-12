@@ -200,6 +200,26 @@ It replaces the obsolete dictionary abstract class.
    ```
 
 
+# Sets in Java
+
+1. Sets are just like lists, but they can not contain duplicates.
+2. Sets are not having any order, There can be no order.
+3. LinkhashSets and Treesets are the ordered implementation of sets.
+4. Sets provide add(), remove(), clear() method to add , remove and clear data in sets.
+5. size() methods can give the total number of elements in set.
+6. contains() method can be used to see if a specific item exists in the set.
+7. There is no way we can fetch a specific positional Items from the set, for example if i want to read the 10th element
+i will have to iterate all the elements till 10.
+   
+8. All the things that apply to Keys in map also apply to keys in sets.
+9. Best performing interface of sets is Hashset class,It uses hashes to store the items.
+10. Hashset implementation uses Hashmap implementation.
+11. Whenever an element is added to a set, it becomes the key and a dummy object is inserted as value.
+12. Operations on set are very fast.
+13. addAll will work as union on the sets, eliminating the duplicates.
+14. 
+
+
 
 
 
