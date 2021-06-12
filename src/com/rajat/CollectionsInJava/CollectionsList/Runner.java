@@ -1,8 +1,5 @@
 package com.rajat.CollectionsInJava.CollectionsList;
 
-import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,72 +9,40 @@ public class Runner {
     public static void main(String[] args) {
         Theatre inox = new Theatre("INOX",8,12);
 
-        inox.getSeats();
-        /*if (inox.reserveSeat("A02")){
+        //System.out.println(inox.getSeats());
+
+        if (inox.reserveSeat("D12")){
             System.out.println("Please Pay");
         }else {
             System.out.println("Seat Taken !!");
         }
-        if (inox.reserveSeat("A02")){
+
+        if (inox.reserveSeat("G12")){
             System.out.println("Please Pay");
         }else {
             System.out.println("Seat Taken !!");
-        }*/
-
-        ArrayList<Theatre.Seat> seatsCopy;
-        seatsCopy = new ArrayList<Theatre.Seat>(inox.getSeats());
-        getSeats(seatsCopy);
-
-        seatsCopy.get(1).reserve();
-        if(inox.reserveSeat("A02")){
-            System.out.println("Please pay for reserved seat");
-        }else{
-            System.out.println("Seat already Taken...");
         }
 
-        // Using the reverse method
-        Collections.reverse(seatsCopy);
+        showList((List<Theatre.Seat>) inox.getSeats());
 
-        System.out.println("Printing the seats copy array");
-        getSeats(seatsCopy);
-        System.out.println("Printing the Inox seats");
-        getSeats(inox.seats);
+        // Checking the Comparator method
+        List<Theatre.Seat> priceList = new ArrayList<>(inox.getSeats());
 
-        // Using the Shuffle method
-        System.out.println("Doing the Shuffle");
-        Collections.shuffle(seatsCopy);
-        getSeats(seatsCopy);
+        // Add a new class in inner class
+        priceList.add(inox.new Seat("V01",1299));
+        priceList.add(inox.new Seat("V02",1299));
 
-        // Using the min and max
-        Theatre.Seat minSeat = Collections.min(seatsCopy);
-        Theatre.Seat maxSeat = Collections.max(seatsCopy);
-
-        System.out.println("Minumim Seat  Number : " + minSeat.getSeatNumber());
-        System.out.println("Maximum Seat  Number : " + maxSeat.getSeatNumber());
-
-        // Sorting using the bubble sort we have written
-        sortList(seatsCopy);
-        System.out.println("Printing the seats copy array after the bubble sort");
-        getSeats(seatsCopy);
-
+        Collections.sort(priceList,Theatre.PRICE_ORDER);
+        showList(priceList);
     }
 
-    public static void getSeats(ArrayList<Theatre.Seat> seats){
+    public static void showList(List<Theatre.Seat> list ){
+        for (Theatre.Seat seat : list){
+            System.out.print("Seat Number : " + seat.getSeatNumber() + " ");
+            System.out.print("Price : " + seat.getPrice() + "|");
 
-        for(Theatre.Seat seat: seats){
-            System.out.print(" " + seat.getSeatNumber());
         }
         System.out.println();
-    }
-
-    // Bubble sort
-    public static void sortList(List<? extends  Theatre.Seat> incomingList){
-        for(int i = 0; i < incomingList.size() - 1; i++){
-            for(int j = i+1; j<incomingList.size();j++){
-                if(incomingList.get(i).compareTo(incomingList.get(j)) > 0){
-                    Collections.swap(incomingList,i,j);
-                }
-            }
-        }
+        System.out.println("==========================");
     }
 }

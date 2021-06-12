@@ -82,7 +82,122 @@ This will point to the same Arraylist though.
 ### 5. Swap Method
 - We can use Swap method.
 
+```
+    // Bubble sort
+    public static void sortList(List<? extends  Theatre.Seat> incomingList){
+        for(int i = 0; i < incomingList.size() - 1; i++){
+            for(int j = i+1; j<incomingList.size();j++){
+                if(incomingList.get(i).compareTo(incomingList.get(j)) > 0){
+                    Collections.swap(incomingList,i,j);
+                }
+            }
+        }
+    }
+```
 
+### 6. Copy
+Does a deep copy but we have to make sure the target has enough memory.
+
+## Collections - Comparable vs Comparator
+Just like Comparable , Collections have comparator which can implememt method called compare.
+
+Comparable needs to be implement comparable :
+
+```aidl
+        public class Seat implements Comparable<Seat>{
+        private final String seatNumber;
+        private boolean reserved = false;
+        private double price;
+```
+
+and then we need to implement the compareTo method :
+
+```aidl
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
+        }
+```
+
+Comparator interface defines a single method 'Compare'
+
+Unlike Comparable , objects that need to be sorted don't need to have implement the comparator,
+instead we can create a object of type Comparator can be created with the compare method.
+
+More than one comparator can be created, which can allow the objects to be sorted in different manner.
+
+
+```aidl
+    static final Comparator<Seat> PRICE_ORDER = new Comparator<Seat>() {
+        @Override
+        public int compare(Seat seat1, Seat seat2) {
+            if(seat1.getPrice() > seat2.getPrice()){
+                return 1;
+            }else if(seat1.getPrice() < seat2.getPrice()){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+    };
+```
+
+The only problem with Comparator method as compared to Comparable is : Comaprable is consistent with equalTO
+that means, if 2 objects are compared, they will be compared all together
+But In case of comparator, the action, in our case will be taken only on price and we will have to manually code 
+if we need to compare the seat number as well.
+
+# Maps In Java
+
+Maps are part of collection framework, however they are not true collections.
+It replaces the obsolete dictionary abstract class.
+
+- Java Map can not have a duplicate Key and each key can be mapped to only a single value.
+- Takes 2 types (1 for key and other for Value.
+- 2 classes implement Maps collections - Hashmaps and SortedMaps.
+- Put method can be used to add data toi maps.
+- Get method can get specific keys
+- If we insert values with the same keys, the value will be overwritten, without error.
+- Put method will give itself null if the data is inserted the first time, but will give previous data if there was any.
+- contains method checks if that key is already existing.
+- putIfAbsent() method will insert only if key is not present.
+- keySet() will return a set of all the keys.
+    ```aidl
+        // To get all the keys
+        Set<String> keys = myMap.keySet();
+        for(String key : keys){
+            System.out.println("Key : " + key + " Value : " + myMap.get(key));
+        }
+    }
+    ```
+- There is not gauranteed order of the data present in Map.
+- remove() method can be used to remove the elements from the list, we can delete based on key level only and key value pair level as well.
+    ```aidl
+        // to remove on Key value pair
+        if(myLanguages.getLanguages().remove("Removal","Let's see if this get's removed")){
+            System.out.println("Removal removed");
+        }else{
+            System.out.println("Key Value pair not matched");
+        }
+        // To remove based on key
+        myLanguages.getLanguages().remove("Removal");
+
+    ```
+    this method returns true/False based on it was removed or not.
+- replace() method is added to replace the value if the key is already assigned a value.
+    ```aidl
+        // Checking Replace() method based on key and value
+        myLanguages.getLanguages().replace("Replace","This text will be replaced",
+                "This text will be replaced again");
+
+        System.out.println("------------------Printing after Replacing(K/V)----------------------------------");
+        printMap(myLanguages.getLanguages());
+
+        // Replace based on Key
+        myLanguages.getLanguages().replace("Replace","This is the replaced value");
+        System.out.println("------------------Printing after Replacing(K)----------------------------------");
+        printMap(myLanguages.getLanguages());
+   ```
 
 
 
