@@ -217,7 +217,72 @@ i will have to iterate all the elements till 10.
 11. Whenever an element is added to a set, it becomes the key and a dummy object is inserted as value.
 12. Operations on set are very fast.
 13. addAll will work as union on the sets, eliminating the duplicates.
-14. 
+14. If we are adding own objects in a set, in that case equality can be disturbed and it is mentioned in the sets documentation.
+15. In case we are using custom objects in set/Maps, in that case we have to override the Equals method.
+
+  ```
+    @Override
+    public boolean equals(Object o) {
+        System.out.println("Overriding the equals method :");
+        System.out.println(this);
+        System.out.println("o.getClass() : " + o.getClass());
+        System.out.println("this.getClass() : " + this.getClass());
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+        HeavenlyBody that = (HeavenlyBody) o;
+        return name.equals(that.name);
+    }
+  ```
+
+Here we are comparing on based of name.
+16. We will also have to implement the hashcode as well :
+  ```
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+  ```
+
+### Sets Mathemetical Operations
+
+We can have multiple mathemetical operations that can be performed on the sets.
+
+1. addAll() - For union of 2 sets.
+  ```aidl
+  We have 2 sets
+  static Set<Integer> squares = new HashSet<>();
+  static Set<Integer> cubes = new HashSet<>();
+  
+  to Check Union
+  
+  // To perform Union
+        Set<Integer> union = new HashSet<>(squares);
+        union.addAll(cubes);
+        System.out.println("Total number of Squares and Cubes : " + union.size());
+```
+
+2. retainAll() - This performs the inersection
+
+```aidl
+// Intersection
+        Set<Integer> intersection = new HashSet<>(squares);
+        intersection.retainAll(cubes);
+        System.out.println("Intersection : Total number of Squares and Cubes : " + intersection.size());
+```
+
+3. removeAll() - A.removeAll(B) will remove all the elements from A that are present in B.
+
+4. containsAll() - To check if one set is superset of Another.
+
+# Sorted and Linked Collections
+
+Hashmap and Hashset have sorted collections as well.
+
+Linked versions of Hashmaps and Hashsets are called as LinkedHashMaps and LinkedHashSets - Linked version maintains orders.
+
+
+
 
 
 
